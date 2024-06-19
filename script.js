@@ -172,3 +172,43 @@ const horse = new Companion("Shadowmane", "Mount");
 robin.companions.push(dog, horse);
 dog.accompany(robin);
 horse.accompany(robin);
+
+// Part 4: Class Uniforms
+
+// Adding static properties and methods to the Character and Adventurer classes
+
+class Character {
+    static MAX_HEALTH = 100;
+
+    constructor(name) {
+        this.name = name;
+        this.health = Character.MAX_HEALTH;
+        this.inventory = [];
+    }
+
+    roll() {
+        const rollValue = Math.floor(Math.random() * 20) + 1;
+        console.log(`${this.name} rolls a ${rollValue}.`);
+        return rollValue;
+    }
+}
+
+class Adventurer extends Character {
+    static ROLES = ["Fighter", "Healer", "Wizard"];
+
+    constructor(name, role) {
+        super(name);
+        if (Adventurer.ROLES.includes(role)) {
+            this.role = role;
+        } else {
+            throw new Error(`Invalid role: ${role}`);
+        }
+        this.inventory.push("bedroll", "50 gold coins");
+    }
+
+    scout() {
+        console.log(`${this.name} is scouting ahead...`);
+        super.roll();
+    }
+}
+
