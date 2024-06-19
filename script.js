@@ -164,3 +164,11 @@ class Companion extends Character {
         console.log(`${this.name} is becoming distressed!`);
     }
 }
+
+const robin = new Adventurer("Robin", "Healer");
+const dog = new Companion("Barkley", "Pet");
+const horse = new Companion("Shadowmane", "Mount");
+
+robin.companions.push(dog, horse);
+dog.accompany(robin);
+horse.accompany(robin);
