@@ -136,3 +136,31 @@ class Adventurer extends Character {
         super.roll();
     }
 }
+
+class Companion extends Character {
+    constructor(name, type) {
+        super(name);
+        this.type = type; // Companions can be of various types, e.g., pet, familiar, mount
+        this.loyalty = 100; // Companions start with full loyalty
+    }
+
+    // Companions can accompany their adventurer owner
+    accompany(adventurer) {
+        console.log(`${this.name} is accompanying ${adventurer.name}.`);
+    }
+
+    // Companions can provide assistance to their adventurer owner
+    assist(adventurer) {
+        if (this.loyalty > 50) {
+            console.log(`${this.name} assists ${adventurer.name}.`);
+            // Perform assistance-specific actions here
+        } else {
+            console.log(`${this.name} is not loyal enough to assist ${adventurer.name}.`);
+        }
+    }
+
+    // Companions can become distressed if their loyalty decreases
+    becomeDistressed() {
+        console.log(`${this.name} is becoming distressed!`);
+    }
+}
