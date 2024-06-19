@@ -78,3 +78,61 @@ console.log(robin.companion.name, "is a", robin.companion.type, "and has the fol
 robin.roll(2);
 robin.companion.roll();
 robin.companion.companion.roll(-1);
+
+// Part 3: Class Features
+
+// class Adventurer extends Character {
+//     constructor(name, role) {
+//         super(name);
+//         // Adventurers have specialized roles.
+//         this.role = role;
+//         // Every adventurer starts with a bed and 50 gold coins.
+//         this.inventory.push("bedroll", "50 gold coins");
+//     }
+//     // Adventurers have the ability to scout ahead of them.
+//     scout() {
+//         console.log(`${this.name} is scouting ahead...`);
+//         super.roll();
+//     }
+// }
+
+class Adventurer extends Character {
+    constructor(name, role) {
+        super(name);
+        this.role = role;
+        this.inventory.push("bedroll", "50 gold coins");
+        this.skillPoints = 10; // Adventurers have a pool of skill points to distribute
+        this.skills = {
+            combat: 5, // Adventurers start with some basic combat skills
+            stealth: 5,
+            arcana: 0, // Skills may vary depending on role
+            healing: 0
+        };
+    }
+
+    // Adventurers can improve their skills
+    improveSkill(skillName, points) {
+        if (this.skillPoints >= points && this.skills[skillName] !== undefined) {
+            this.skills[skillName] += points;
+            this.skillPoints -= points;
+            console.log(`${this.name} has improved their ${skillName} skill by ${points} points.`);
+        } else {
+            console.log("Insufficient skill points or invalid skill name.");
+        }
+    }
+
+    // Adventurers can use their skills in various situations
+    useSkill(skillName) {
+        if (this.skills[skillName] > 0) {
+            console.log(`${this.name} uses their ${skillName} skill.`);
+            // Perform skill-specific actions here
+        } else {
+            console.log(`${this.name} does not have any ${skillName} skill.`);
+        }
+    }
+
+    scout() {
+        console.log(`${this.name} is scouting ahead...`);
+        super.roll();
+    }
+}
