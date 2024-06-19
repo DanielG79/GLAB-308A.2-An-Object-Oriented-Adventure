@@ -57,3 +57,12 @@ class Companion extends Character {
         this.companion = companion;
     }
 }
+
+// Create the adventurer
+const robin = new Character("Robin");
+robin.inventory = ["sword", "potion", "artifact"];
+
+// Create the companions
+const leo = new Companion("Leo", "Cat");
+const frank = new Companion("Frank", "Flea");
+frank.inventory = ["small hat", "sunglasses"];
