@@ -66,3 +66,7 @@ robin.inventory = ["sword", "potion", "artifact"];
 const leo = new Companion("Leo", "Cat");
 const frank = new Companion("Frank", "Flea");
 frank.inventory = ["small hat", "sunglasses"];
+
+// Add the companions
+leo.addCompanion(frank);
+robin.companion = leo;
