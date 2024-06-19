@@ -70,3 +70,7 @@ frank.inventory = ["small hat", "sunglasses"];
 // Add the companions
 leo.addCompanion(frank);
 robin.companion = leo;
+
+// Test the game
+console.log(robin.name, "has", robin.health, "health and the following items in their inventory:", robin.inventory);
+console.log(robin.companion.name, "is a", robin.companion.type, "and has the following item(s):", robin.companion.companion.inventory);
