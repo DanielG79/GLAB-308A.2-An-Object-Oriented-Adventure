@@ -74,3 +74,7 @@ robin.companion = leo;
 // Test the game
 console.log(robin.name, "has", robin.health, "health and the following items in their inventory:", robin.inventory);
 console.log(robin.companion.name, "is a", robin.companion.type, "and has the following item(s):", robin.companion.companion.inventory);
+
+robin.roll(2);
+robin.companion.roll();
+robin.companion.companion.roll(-1);
