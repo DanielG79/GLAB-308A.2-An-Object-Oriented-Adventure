@@ -238,3 +238,56 @@ class AdventurerFactory {
 
 const healerFactory = new AdventurerFactory("Healer");
 const robin = healerFactory.generate("Robin");
+
+// Part 6: Developing Skills
+// implementation of the duel() method for the Adventurer class
+
+class Adventurer extends Character {
+    // ... previous Adventurer class code ...
+
+    duel(opponent) {
+        console.log(`${this.name} is dueling ${opponent.name}.`);
+
+        let round = 1;
+        while (this.health > 50 && opponent.health > 50) {
+            console.log(`Round ${round}:`);
+
+            const myRoll = this.roll();
+            const opponentRoll = opponent.roll();
+            console.log(`${this.name} rolls a ${myRoll}, ${opponent.name} rolls a ${opponentRoll}.`);
+
+            if (myRoll < opponentRoll) {
+                this.health -= 1;
+                console.log(`${this.name} takes 1 damage. Their health is now ${this.health}.`);
+            } else {
+                opponent.health -= 1;
+                console.log(`${opponent.name} takes 1 damage. Their health is now ${opponent.health}.`);
+            }
+
+            round++;
+        }
+
+        if (this.health > 50) {
+            console.log(`${this.name} wins the duel!`);
+        } else {
+            console.log(`${opponent.name} wins the duel!`);
+        }
+    }
+}
+
+// Part 7: Adventure Forth
+// generate a group of adventurers and companions, and have them interact:
+
+// Generate some adventurers
+const fighterFactory = new AdventurerFactory("Fighter");
+const heilerFactory = new AdventurerFactory("Healer");
+const wizardFactory = new AdventurerFactory("Wizard");
+
+const fighter1 = fighterFactory.generate("Krom");
+const healer1 = heilerFactory.generate("Asha");
+const wizard1 = wizardFactory.generate("Zara");
+
+// Generate some companions
+const dog = new Companion("Barkley", "Pet");
+const horse = new Companion("Shadowmane", "Mount");
+const owl =
